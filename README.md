@@ -32,4 +32,4 @@ subject to change
 
 - A and D to move left and right
 - Space to shoot 
-- E to reset when all lives lost 
+- R to reset when all lives lost 
