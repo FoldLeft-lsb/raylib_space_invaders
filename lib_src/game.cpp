@@ -29,7 +29,8 @@ void Game::init_game() {
   lives = 3;
   run = true;
   score = 0;
-  high_score = load_highscore_from_file();
+  // high_score = load_highscore_from_file()
+  high_score = 0;
 };
 
 void Game::reset() {
@@ -270,7 +271,7 @@ void Game::check_collisions() {
 void Game::check_high_score() {
   if (score > high_score) {
     high_score = score;
-    save_highscore_to_file(high_score);
+    // save_highscore_to_file(high_score);
   }
 };
 
@@ -279,24 +280,24 @@ void Game::game_over() {
   run = false;
 };
 
-void Game::save_highscore_to_file(int high_score) {
-  std::ofstream highscoreFile("highscore.txt");
-  if (highscoreFile.is_open()) {
-    highscoreFile << high_score;
-    highscoreFile.close();
-  } else {
-    std::cerr << "Failed to save highscore to file" << std::endl;
-  }
-};
+// void Game::save_highscore_to_file(int high_score) {
+//   std::ofstream highscoreFile("highscore.txt");
+//   if (highscoreFile.is_open()) {
+//     highscoreFile << high_score;
+//     highscoreFile.close();
+//   } else {
+//     std::cerr << "Failed to save highscore to file" << std::endl;
+//   }
+// };
 
-int Game::load_highscore_from_file() {
-  int loaded_highscore = 0;
-  std::ifstream highscoreFile("highscore.txt");
-  if (highscoreFile.is_open()) {
-    highscoreFile >> loaded_highscore;
-    highscoreFile.close();
-  } else {
-    std::cerr << "Failed to load highscore from file" << std::endl;
-  }
-  return loaded_highscore;
-};
+// int Game::load_highscore_from_file() {
+//   int loaded_highscore = 0;
+//   std::ifstream highscoreFile("highscore.txt");
+//   if (highscoreFile.is_open()) {
+//     highscoreFile >> loaded_highscore;
+//     highscoreFile.close();
+//   } else {
+//     std::cerr << "Failed to load highscore from file" << std::endl;
+//   }
+//   return loaded_highscore;
+// };

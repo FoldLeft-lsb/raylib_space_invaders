@@ -1,1 +1,1 @@
-clang++ main.cpp lib_src/*.cpp -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -lstdc++ -o main 
+clang++ main.cpp lib_src/alien.cpp lib_src/block.cpp lib_src/entry.cpp lib_src/game.cpp lib_src/laser.cpp lib_src/mysteryship.cpp lib_src/obstacle.cpp lib_src/ship.cpp main.cpp -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -lstdc++ -o main 

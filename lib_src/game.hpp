@@ -30,8 +30,8 @@ private:
   void reset();
   void init_game();
   void check_high_score();
-  void save_highscore_to_file(int high_score);
-  int load_highscore_from_file();
+  // void save_highscore_to_file(int high_score);
+  // int load_highscore_from_file();
   Ship spaceship;
   std::vector<Obstacle> obstacles;
   std::vector<Alien> aliens;

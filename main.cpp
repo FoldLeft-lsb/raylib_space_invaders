@@ -1,3 +1,7 @@
-#include "lib_src/entry.hpp"
+#include "lib_src/entry_ems.hpp"
+#include <iostream>
 
-int main(void) { return loop(); };
+int main(void) {
+  std::cout << "Loading Space Invaders - WASM" << std::endl;
+  return loop();
+};

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+  <meta charset=utf-8>
+  <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
+  <title>Space Invaders</title>
+  <meta content="Space Invaders" name=title>
+  <meta content="Space Invaders made with Raylib and C++" name=description>
+  <meta content="raylib, programming, examples, html5, C, C++, library, games, videogames" name=keywords>
+  <meta content="width=device-width" name=viewport>
+
+  <link rel="shortcut icon" href="https://www.raylib.com/favicon.ico">
+
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .emscripten {
+      padding-right: 0;
+      display: block;
+    }
+
+    div.emscripten {
+      text-align: center
+    }
+
+    div.emscripten_border {
+      border: 1px solid #000;
+      width: 750px;
+    }
+
+    canvas.emscripten {
+      border: 0 none;
+      background: #000;
+    }
+
+    #output {
+      width: 745px;
+      height: 140px;
+      margin: 0 auto;
+      display: block;
+      background-color: #000;
+      color: #25ae26;
+      font-family: 'Lucida Console', Monaco, monospace;
+      outline: 0;
+      float: left;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
+  <textarea id=output rows=8></textarea>
+  <script>
+    var Module = {
+      print: function () {
+        var e = document.querySelector("#output");
+        return e && (e.value = ""), function (t) {
+          arguments.length > 1 && (t = Array.prototype.slice.call(arguments).join(" ")), console.log(t), e && (e.value += t + "\n", e.scrollTop = e.scrollHeight)
+        }
+      }(),
+      printErr: function (e) {
+        arguments.length > 1 && (e = Array.prototype.slice.call(arguments).join(" ")); console.error(e);
+      },
+      canvas: (function () {
+        var canvas = document.getElementById('canvas');
+        return canvas;
+      })()
+    };
+  </script>
+  {{{ SCRIPT }}}
+</body>
+
+</html>
