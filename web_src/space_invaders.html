@@ -54,6 +54,9 @@
   <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
   <textarea id=output rows=8></textarea>
   <script>
+    var canvas = document.getElementById('canvas');
+    window.GLctx = canvas.getContext('webgl2');
+    console.log(window.GLctx);
     var Module = {
       print: function () {
         var e = document.querySelector("#output");
@@ -65,7 +68,6 @@
         arguments.length > 1 && (e = Array.prototype.slice.call(arguments).join(" ")); console.error(e);
       },
       canvas: (function () {
-        var canvas = document.getElementById('canvas');
         return canvas;
       })()
     };

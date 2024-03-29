@@ -19,5 +19,5 @@ private:
   Texture2D image;
   Vector2 position;
   double last_fire_time;
-  Sound laser_sound;
+  // Sound laser_sound;
 };

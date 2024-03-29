@@ -42,5 +42,5 @@ private:
   MysteryShip mysteryship;
   float mysteryship_spawn_interval;
   float mysteryship_last_spawn;
-  Sound explosion_sound;
+  // Sound explosion_sound;
 };

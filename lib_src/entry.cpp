@@ -24,7 +24,7 @@ int loop() {
   Game game;
 
   while (!WindowShouldClose()) {
-    UpdateMusicStream(game.music);
+    // UpdateMusicStream(game.music);
     game.handle_input();
     game.update();
 

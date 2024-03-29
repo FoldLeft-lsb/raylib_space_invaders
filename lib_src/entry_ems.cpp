@@ -25,7 +25,7 @@ const int vpWidth = 750;
 const int vpHeight = 700;
 
 void update_draw_frame() {
-  UpdateMusicStream(game.music);
+  // UpdateMusicStream(game.music);
   game.handle_input();
   game.update();
 
@@ -58,9 +58,9 @@ void update_draw_frame() {
 int loop() {
   spaceshipImage = LoadTexture("Graphics/spaceship.png");
 
-  SetTargetFPS(30);
+  SetTargetFPS(60);
   InitWindow(vpWidth + offset, vpHeight + 2 * offset, "Space Invaders");
-  InitAudioDevice();
+  // InitAudioDevice();
 
 #if defined(PLATFORM_WEB)
   emscripten_set_main_loop(update_draw_frame, 0, 1);
@@ -69,7 +69,7 @@ int loop() {
 #endif
 
   CloseWindow();
-  CloseAudioDevice();
+  // CloseAudioDevice();
 
   return 0;
 }

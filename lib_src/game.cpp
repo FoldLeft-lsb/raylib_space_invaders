@@ -8,7 +8,7 @@
 
 Game::Game() {
   // music = LoadMusicStream("Sounds/music.ogg");
-  explosion_sound = LoadSound("Sounds/explosion.ogg");
+  // explosion_sound = LoadSound("Sounds/explosion.ogg");
   // PlayMusicStream(music);
   init_game();
 };
@@ -16,7 +16,7 @@ Game::Game() {
 Game::~Game() {
   Alien::unload_images();
   // UnloadMusicStream(music);
-  UnloadSound(explosion_sound);
+  // UnloadSound(explosion_sound);
 };
 
 void Game::init_game() {
@@ -41,6 +41,10 @@ void Game::reset() {
 };
 
 void Game::update() {
+  if (IsKeyPressed(KEY_R)) {
+    reset();
+    init_game();
+  }
   if (run) {
     double currentTime = GetTime();
     if (currentTime - mysteryship_last_spawn > mysteryship_spawn_interval) {
@@ -60,11 +64,6 @@ void Game::update() {
     delete_inactive_lasers();
     mysteryship.update();
     check_collisions();
-  } else {
-    if (IsKeyPressed(KEY_R)) {
-      reset();
-      init_game();
-    }
   }
 };
 
@@ -118,11 +117,11 @@ void Game::delete_inactive_lasers() {
 
 std::vector<Obstacle> Game::create_obstacles() {
   int obstacleWidth = Obstacle::grid[0].size() * 3;
-  float gap = float(GetScreenWidth() - (4 * obstacleWidth)) / 5;
+  float gap = float(750 - (4 * obstacleWidth)) / 5;
 
   for (int i = 0; i < 4; i++) {
     float offsetX = (i + 1) * gap + i * obstacleWidth;
-    obstacles.push_back(Obstacle({offsetX, float(GetScreenHeight() - 200)}));
+    obstacles.push_back(Obstacle({offsetX, float(700 - 200)}));
   }
   return obstacles;
 };
@@ -149,8 +148,7 @@ std::vector<Alien> Game::create_aliens() {
 
 void Game::move_aliens() {
   for (auto &alien : aliens) {
-    if (alien.position.x + alien.alienImages[alien.type - 1].width >
-        GetScreenWidth() - 25) {
+    if (alien.position.x + alien.alienImages[alien.type - 1].width > 750 - 25) {
       aliens_direction = -1;
       move_aliens_down(4);
     } else if (alien.position.x < 25) {
@@ -199,7 +197,7 @@ void Game::check_collisions() {
         check_high_score();
         it = aliens.erase(it);
         laser.active = false;
-        PlaySound(explosion_sound);
+        // PlaySound(explosion_sound);
       } else {
         ++it;
       }
@@ -222,7 +220,7 @@ void Game::check_collisions() {
       laser.active = false;
       score += 500;
       check_high_score();
-      PlaySound(explosion_sound);
+      // PlaySound(explosion_sound);
     }
   }
 
