@@ -2,6 +2,6 @@
 #include <iostream>
 
 int main(void) {
-  std::cout << "Loading Space Invaders - WASM" << std::endl;
+  std::cout << "GAME: Loading Space Invaders - WASM" << std::endl;
   return loop();
 };

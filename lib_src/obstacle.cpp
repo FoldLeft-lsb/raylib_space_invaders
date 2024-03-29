@@ -1,5 +1,4 @@
 #include "obstacle.hpp"
-#include <iostream>
 #include <vector>
 
 std::vector<std::vector<int>> Obstacle::grid = {
@@ -19,10 +18,6 @@ std::vector<std::vector<int>> Obstacle::grid = {
 
 Obstacle::Obstacle(Vector2 position) {
   this->position = position;
-
-  std::cout << "Obstacle constructor: ( " << std::to_string(position.x) << ", "
-            << std::to_string(position.y) << " )" << std::endl;
-
   for (unsigned int row = 0; row < grid.size(); ++row) {
     for (unsigned int col = 0; col < grid[0].size(); ++col) {
       if (grid[row][col] == 1) {

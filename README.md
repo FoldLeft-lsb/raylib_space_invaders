@@ -31,5 +31,7 @@ Hiscore is saved to a file "highscore.txt"
 subject to change 
 
 - A and D to move left and right
-- Space to shoot 
-- R to reset when all lives lost 
+- Space to unpause and to shoot 
+- R to reset 
+
+Note: If the ship and obstacles don't appear, press R to reset 

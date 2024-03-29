@@ -27,7 +27,7 @@ void Game::init_game() {
   mysteryship_last_spawn = 0.0;
   mysteryship_spawn_interval = GetRandomValue(10, 20);
   lives = 3;
-  run = true;
+  run = false;
   score = 0;
   // high_score = load_highscore_from_file()
   high_score = 0;
@@ -42,6 +42,7 @@ void Game::reset() {
 
 void Game::update() {
   if (IsKeyPressed(KEY_R)) {
+    std::cout << "GAME: Reset" << std::endl;
     reset();
     init_game();
   }
@@ -95,6 +96,11 @@ void Game::handle_input() {
     if (IsKeyDown(KEY_SPACE)) {
       spaceship.fire_laser();
     }
+  } else {
+    if (IsKeyDown(KEY_SPACE)) {
+      std::cout << "GAME: Unpause" << std::endl;
+      run = true;
+    }
   }
 };
 
@@ -117,11 +123,11 @@ void Game::delete_inactive_lasers() {
 
 std::vector<Obstacle> Game::create_obstacles() {
   int obstacleWidth = Obstacle::grid[0].size() * 3;
-  float gap = float(750 - (4 * obstacleWidth)) / 5;
+  float gap = float(GetScreenWidth() - (4 * obstacleWidth)) / 5;
 
   for (int i = 0; i < 4; i++) {
     float offsetX = (i + 1) * gap + i * obstacleWidth;
-    obstacles.push_back(Obstacle({offsetX, float(700 - 200)}));
+    obstacles.push_back(Obstacle({offsetX, float(GetScreenHeight() - 200)}));
   }
   return obstacles;
 };
@@ -148,7 +154,8 @@ std::vector<Alien> Game::create_aliens() {
 
 void Game::move_aliens() {
   for (auto &alien : aliens) {
-    if (alien.position.x + alien.alienImages[alien.type - 1].width > 750 - 25) {
+    if (alien.position.x + alien.alienImages[alien.type - 1].width >
+        GetScreenWidth() - 25) {
       aliens_direction = -1;
       move_aliens_down(4);
     } else if (alien.position.x < 25) {
@@ -274,7 +281,7 @@ void Game::check_high_score() {
 };
 
 void Game::game_over() {
-  std::cout << "Game Over!" << std::endl;
+  std::cout << "GAME: Game Over!" << std::endl;
   run = false;
 };
 

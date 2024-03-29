@@ -50,6 +50,10 @@ void update_draw_frame() {
     x += 50;
   }
 
+  if (!game.run) {
+    DrawText("PAUSED", 570, 640, 32, YELLOW_2);
+  }
+
   game.draw();
 
   EndDrawing();

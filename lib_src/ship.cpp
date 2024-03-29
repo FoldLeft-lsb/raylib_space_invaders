@@ -6,11 +6,9 @@
 
 Ship::Ship() {
   image = LoadTexture("Graphics/spaceship.png");
-  position.x = (750 - image.width) / 2.0f;
-  position.y = 700 - image.height - 100;
+  position.x = (GetScreenWidth() - image.width) / 2.0f;
+  position.y = GetScreenHeight() - image.height - 100;
   last_fire_time = 0.0;
-  std::cout << "Ship constructor: ( " << std::to_string(position.x) << ", "
-            << std::to_string(position.y) << " )" << std::endl;
   // laser_sound = LoadSound("Sounds/laser.ogg");
 };
 
@@ -30,8 +28,8 @@ void Ship::move_left() {
 
 void Ship::move_right() {
   position.x += 7;
-  if (position.x > 750 - image.width - 25) {
-    position.x = 750 - image.width - 25;
+  if (position.x > GetScreenWidth() - image.width - 25) {
+    position.x = GetScreenWidth() - image.width - 25;
   }
 };
 
@@ -49,7 +47,7 @@ Rectangle Ship::get_rect() {
 };
 
 void Ship::reset() {
-  position.x = float(750 - image.width) / 2;
-  position.y = 700 - image.height - 100;
+  position.x = float(GetScreenWidth() - image.width) / 2;
+  position.y = GetScreenHeight() - image.height - 100;
   lasers.clear();
 };

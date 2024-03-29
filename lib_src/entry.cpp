@@ -13,12 +13,12 @@ int loop() {
   Color GREY = Color{29, 29, 27, 255};
   Color YELLOW_2 = Color{243, 216, 63, 255};
   int offset = 50;
-  const int vpWidth = 750;
-  const int vpHeight = 700;
+  const int vpWidth = GetScreenWidth();
+  const int vpHeight = GetScreenHeight();
 
   SetTargetFPS(60);
   InitWindow(vpWidth + offset, vpHeight + 2 * offset, "Space Invaders");
-  InitAudioDevice();
+  // InitAudioDevice();
 
   Texture2D spaceshipImage = LoadTexture("Graphics/spaceship.png");
   Game game;
@@ -55,7 +55,7 @@ int loop() {
   }
 
   CloseWindow();
-  CloseAudioDevice();
+  // CloseAudioDevice();
 
   return 0;
 }
